@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent-start: #4f46e5;
+    --accent-end: #06b6d4;
+    /* Space-separated RGB channels back the Tailwind `accent` / `accent-end`
+       colors (see tailwind.config.js). applyAccent() rewrites all four vars,
+       so every accent surface — gradients, links, rings, selection, shadows —
+       recolours live, site-wide. */
+    --accent-rgb: 79 70 229;
+    --accent-end-rgb: 6 182 212;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Decorative blur "blobs" are positioned with negative offsets (e.g.
+       -right-20 on a w-80 circle) and intentionally bleed past the layout for
+       an ambient glow. Clip the horizontal axis so that bleed never creates a
+       real horizontal scrollbar on narrow screens. Vertical bleed is kept. */
+    overflow-x: hidden;
+  }
+
+  /* Page background matches the theme even before React mounts (paired with
+     the pre-paint script in index.html) so there is no white/dark flash. */
+  html {
+    background-color: #fafafb;
+  }
+
+  html.dark {
+    background-color: #0e1117;
+  }
+
+  ::selection {
+    background: rgb(var(--accent-rgb));
+    color: white;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      var(--accent-start) 0%,
+      var(--accent-end) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      var(--accent-start) 0%,
+      var(--accent-end) 100%
+    );
+  }
+
+  .gradient-soft {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent-start) 10%, transparent) 0%,
+      color-mix(in srgb, var(--accent-end) 10%, transparent) 100%
+    );
+  }
+
+  .cover-1 {
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  }
+
+  .cover-2 {
+    background: linear-gradient(135deg, #f472b6, #8b5cf6);
+  }
+
+  .cover-3 {
+    background: linear-gradient(135deg, #06b6d4, #34d399);
+  }
+
+  .cover-4 {
+    background: linear-gradient(135deg, #6366f1, #14b8a6);
+  }
+
+  .stripe-pattern {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0 2px,
+      transparent 2px 26px
+    );
+  }
+
+  .stripe-pattern-45 {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.06) 0 2px,
+      transparent 2px 22px
+    );
+  }
+
+  .dots-bg {
+    background-image: radial-gradient(
+      circle,
+      currentColor 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.35) 0%,
+      transparent 55%
+    );
+    mask-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.35) 0%,
+      transparent 55%
+    );
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-reveal.visible-fast {
+    transition-delay: 0.1s;
+  }
+
+  .scroll-reveal.visible-slow {
+    transition-delay: 0.3s;
+  }
+
+  /* Admin Animations - added to existing utilities */
+  .animate-fadeIn {
+    animation: fadeIn 0.2s ease;
+  }
+
+  .animate-popIn {
+    animation: popIn 0.25s ease;
+  }
+}
