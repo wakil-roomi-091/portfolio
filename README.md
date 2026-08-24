@@ -1,6 +1,54 @@
-# Roomi — Portfolio (MERN)
+<div align="center">
 
-A full-stack developer portfolio with a public site and a secure, database-driven admin panel. Content (profile, projects, skills, contact messages) is managed through the admin UI rather than hardcoded, so the site is effectively a small CMS.
+# Roomi — Portfolio
+
+**A full-stack MERN portfolio with a secure, database-driven admin panel.**
+
+Profile, projects, skills, and contact messages are all managed through the admin UI
+instead of being hardcoded — the site is effectively a small CMS.
+
+<br/>
+
+![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=flat&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-5-000000?style=flat&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=flat&logo=mongodb&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+![JWT](https://img.shields.io/badge/Auth-JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white)
+![Cloudinary](https://img.shields.io/badge/Media-Cloudinary-3448C5?style=flat&logo=cloudinary&logoColor=white)
+
+<br/>
+
+**Live demo:** _Not deployed yet — coming soon_
+
+[Quick start](#getting-started) · [Security model](#security-model) · [Report a bug](https://github.com/wakil-roomi-091/portfolio/issues)
+
+</div>
+
+---
+
+## Table of contents
+
+- [Features](#features)
+- [Tech stack](#tech-stack)
+- [Screenshots](#screenshots)
+- [Project structure](#project-structure)
+- [Getting started](#getting-started)
+- [Environment variables](#environment-variables)
+- [Secrets checklist before deploying](#secrets-checklist-before-deploying)
+- [Security model](#security-model)
+- [API overview](#api-overview)
+
+## Features
+
+- **Database-driven CMS** — manage profile, projects, skills, and contact messages from a secure admin panel; no content is hardcoded.
+- **Secure authentication** — JWT + bcrypt with role-based access and *instant* session revocation: deleting, disabling, or changing the password on an account invalidates its tokens immediately, rather than waiting out the 7-day expiry.
+- **Email verification & contact pipeline** — signup confirmation links plus Brevo-powered contact notifications with an auto-reply to the sender.
+- **Dark mode + live accent theming** — class-strategy dark mode and 11 CSS-variable accent presets that recolour the entire site instantly, with no reload.
+- **Media uploads** — Cloudinary-backed project images and CV / résumé upload.
+- **Hardened by default** — Helmet headers, a strict CORS allow-list, rate limiting, input validation, and credential redaction in logs.
+- **Built for speed** — route-level code splitting and a landing page that paints without waiting on the API.
 
 ## Tech stack
 
@@ -10,6 +58,26 @@ A full-stack developer portfolio with a public site and a secure, database-drive
 - **Media:** Cloudinary (project images + CV upload)
 - **Email:** Brevo transactional API (contact notifications + auto-reply)
 - **Hardening:** Helmet, CORS allow-list, express-rate-limit, express-validator
+
+## Screenshots
+
+> _Screenshots coming soon._ The app ships with a polished light/dark UI, live accent theming, and a full admin dashboard.
+
+<!--
+  To add screenshots: drop PNGs into docs/screenshots/ and uncomment the block below.
+  Suggested captures: home (light + dark), the projects page, and the admin dashboard.
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/home-light.png" alt="Home — light" /><p align="center"><em>Home — light</em></p></td>
+    <td width="50%"><img src="docs/screenshots/home-dark.png" alt="Home — dark" /><p align="center"><em>Home — dark</em></p></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/work.png" alt="Projects" /><p align="center"><em>Projects</em></p></td>
+    <td width="50%"><img src="docs/screenshots/admin.png" alt="Admin dashboard" /><p align="center"><em>Admin dashboard</em></p></td>
+  </tr>
+</table>
+-->
 
 ## Project structure
 
