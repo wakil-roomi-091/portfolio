@@ -95,7 +95,8 @@ const ProfileEditor = () => {
             setSelectedImage(null);
             setImagePreview(null);
         } catch (error) {
-            toast.error('Failed to upload image');
+            const msg = error.response?.data?.message || 'Failed to upload image';
+            toast.error(msg);
         } finally {
             setUploadingImage(false);
         }
@@ -145,7 +146,8 @@ const ProfileEditor = () => {
             toast.success('CV uploaded successfully!');
             setSelectedCV(null);
         } catch (error) {
-            toast.error('Failed to upload CV');
+            const msg = error.response?.data?.message || 'Failed to upload CV';
+            toast.error(msg);
         } finally {
             setUploadingCV(false);
         }
