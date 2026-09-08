@@ -5,23 +5,31 @@ const { sendServerError, redact } = require("../utils/secrets");
 // `GET /api/profile` is public, so it returns only what the site renders.
 // The Cloudinary public ids (internal asset handles used for delete/replace)
 // and Mongo bookkeeping fields (__v, timestamps) stay server-side.
-const publicProfile = (profile) => ({
-  name: profile.name,
-  title: profile.title,
-  location: profile.location,
-  education: profile.education,
-  aboutHeading: profile.aboutHeading,
-  aboutP1: profile.aboutP1,
-  aboutP2: profile.aboutP2,
-  stats: (profile.stats || []).map(({ num, lab }) => ({ num, lab })),
-  social: {
-    github: profile.social?.github || "",
-    linkedin: profile.social?.linkedin || "",
-    email: profile.social?.email || "",
-  },
-  profileImage: profile.profileImage,
-  cvUrl: profile.cvUrl,
-});
+const publicProfile = (profile) => {
+  if (!profile) return {};
+  return {
+    name: profile.name || "",
+    title: profile.title || "",
+    location: profile.location || "",
+    education: profile.education || "",
+    aboutHeading: profile.aboutHeading || "",
+    aboutP1: profile.aboutP1 || "",
+    aboutP2: profile.aboutP2 || "",
+    stats: Array.isArray(profile.stats)
+      ? profile.stats.map((item) => ({
+          num: item?.num || "",
+          lab: item?.lab || "",
+        }))
+      : [],
+    social: {
+      github: profile.social?.github || "",
+      linkedin: profile.social?.linkedin || "",
+      email: profile.social?.email || "",
+    },
+    profileImage: profile.profileImage || "",
+    cvUrl: profile.cvUrl || "",
+  };
+};
 
 // Best-effort Cloudinary delete: a failure here must not fail the request, but
 // it must be visible in the logs (an orphaned CV stays publicly downloadable).
@@ -44,7 +52,11 @@ const getProfile = async (req, res) => {
     let profile = await Profile.findOne();
     if (!profile) {
       profile = new Profile();
-      await profile.save();
+      try {
+        await profile.save();
+      } catch (saveErr) {
+        console.warn("Initial profile save warning:", saveErr.message);
+      }
     }
     res.json(publicProfile(profile));
   } catch (error) {
