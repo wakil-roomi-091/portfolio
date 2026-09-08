@@ -77,9 +77,7 @@ const AdminProjects = () => {
         });
 
         try {
-            const res = await api.post('/projects/upload', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-            });
+            const res = await api.post('/projects/upload', formData);
             return res.data.images;
         } catch (error) {
             toast.error('Failed to upload images');

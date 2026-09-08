@@ -130,10 +130,15 @@ const uploadProfileImage = async (req, res) => {
       profile = new Profile();
     }
 
-    await destroyAsset(profile.profileImagePublicId, "image");
+    if (profile.profileImagePublicId) {
+      await destroyAsset(profile.profileImagePublicId, "image");
+    }
 
-    profile.profileImage = req.file.path;
-    profile.profileImagePublicId = req.file.filename;
+    const publicId = req.file.filename || req.file.public_id || "";
+    const imageUrl = req.file.path || req.file.secure_url || "";
+
+    profile.profileImage = imageUrl;
+    profile.profileImagePublicId = publicId;
     await profile.save();
 
     // The public id is an internal handle — the client only needs the URL.
@@ -143,11 +148,6 @@ const uploadProfileImage = async (req, res) => {
   }
 };
 
-// Upload the CV. The multer `cvStorage` engine has already streamed the file to
-// Cloudinary as a raw asset by the time we get here (req.file.path is the URL,
-// req.file.filename the public id), so use it directly. An earlier version
-// re-uploaded req.file.path a second time and tracked only the copy, leaving the
-// first upload as an untracked, publicly downloadable orphan of a PII document.
 const uploadCV = async (req, res) => {
   try {
     if (!req.file) {
@@ -159,11 +159,15 @@ const uploadCV = async (req, res) => {
       profile = new Profile();
     }
 
-    // Delete the previous CV (raw resource) before pointing at the new one.
-    await destroyAsset(profile.cvPublicId, "raw");
+    if (profile.cvPublicId) {
+      await destroyAsset(profile.cvPublicId, "raw");
+    }
 
-    profile.cvUrl = req.file.path;
-    profile.cvPublicId = req.file.filename;
+    const publicId = req.file.filename || req.file.public_id || "";
+    const cvUrl = req.file.path || req.file.secure_url || "";
+
+    profile.cvUrl = cvUrl;
+    profile.cvPublicId = publicId;
     await profile.save();
 
     // The public id is an internal handle — the client only needs the URL.

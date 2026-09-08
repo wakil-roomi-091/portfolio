@@ -89,9 +89,7 @@ const ProfileEditor = () => {
         formData.append('profileImage', selectedImage);
 
         try {
-            const res = await api.post('/profile/upload', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-            });
+            const res = await api.post('/profile/upload', formData);
             setProfile({ ...profile, profileImage: res.data.profileImage });
             toast.success('Profile image updated!');
             setSelectedImage(null);
@@ -142,9 +140,7 @@ const ProfileEditor = () => {
         formData.append('cv', selectedCV);
 
         try {
-            const res = await api.post('/profile/upload-cv', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-            });
+            const res = await api.post('/profile/upload-cv', formData);
             setProfile({ ...profile, cvUrl: res.data.cvUrl });
             toast.success('CV uploaded successfully!');
             setSelectedCV(null);

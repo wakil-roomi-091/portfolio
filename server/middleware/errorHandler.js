@@ -20,8 +20,14 @@ const errorHandler = (err, req, res, next) => {
     return res.status(400).json({ message: errors.join(", ") });
   }
 
-  // Multer / upload rejections carry their own client-safe messages.
-  if (err.name === "MulterError") {
+  // Multer / upload / busboy rejections carry their own client-safe messages.
+  if (
+    err.name === "MulterError" ||
+    err.message?.includes("Multipart") ||
+    err.message?.includes("Boundary") ||
+    err.message?.includes("Only ") ||
+    err.message?.includes("allowed")
+  ) {
     return res.status(400).json({ message: err.message });
   }
 
