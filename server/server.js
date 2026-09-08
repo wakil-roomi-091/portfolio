@@ -25,16 +25,21 @@ app.set("trust proxy", 1);
 app.use(helmet());
 
 // Restrict CORS to known frontend origins (comma-separated in CLIENT_URL).
+// Origins are normalized by trimming whitespace and any trailing slash, so a
+// value like "https://site.app/" still matches the browser's Origin header —
+// which never carries a trailing slash. Without this, a stray slash in
+// CLIENT_URL silently blocks every request from the deployed frontend.
+const stripTrailingSlash = (s) => s.replace(/\/+$/, "");
 const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
   .split(",")
-  .map((o) => o.trim())
+  .map((o) => stripTrailingSlash(o.trim()))
   .filter(Boolean);
 
 app.use(
   cors({
     origin: (origin, callback) => {
       // Allow non-browser clients (no Origin header) and whitelisted origins.
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin || allowedOrigins.includes(stripTrailingSlash(origin))) {
         return callback(null, true);
       }
       callback(new Error("Not allowed by CORS"));
