@@ -12,8 +12,8 @@ const profileSchema = new mongoose.Schema(
     stats: {
       type: [
         {
-          num: { type: String, required: true },
-          lab: { type: String, required: true },
+          num: { type: String, default: "" },
+          lab: { type: String, default: "" },
         },
       ],
       default: [
