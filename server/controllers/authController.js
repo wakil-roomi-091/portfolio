@@ -53,10 +53,14 @@ const issueEmailVerification = (user) => {
 // Best-effort: a mail failure must never fail the request that triggered it.
 // The user can always ask for a new link from the account page.
 const sendVerificationEmail = async (user, rawToken) => {
-  const base = (process.env.CLIENT_URL || "http://localhost:5173")
-    .split(",")[0]
-    .trim()
-    .replace(/\/$/, "");
+  const origins = (process.env.CLIENT_URL || "http://localhost:5173")
+    .split(",")
+    .map((o) => o.trim().replace(/\/+$/, ""))
+    .filter(Boolean);
+  const base =
+    origins.find((o) => !o.includes("localhost") && !o.includes("127.0.0.1")) ||
+    origins[0] ||
+    "http://localhost:5173";
   const link = `${base}/verify-email?token=${rawToken}`;
 
   const result = await sendEmail({
