@@ -41,6 +41,13 @@ const imageFileFilter = (req, file, cb) => {
     }
 };
 
+// Project images upload middleware.
+const uploadImages = multer({
+    storage: imageStorage,
+    limits: { fileSize: 10 * 1024 * 1024 },
+    fileFilter: imageFileFilter,
+});
+
 // Profile photo upload middleware.
 const uploadProfileImage = multer({
     storage: profileImageStorage,
