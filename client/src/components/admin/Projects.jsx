@@ -253,8 +253,8 @@ const AdminProjects = () => {
             ) : (
                 <div className="bg-white dark:bg-[#161B22] border border-[#E7E8EE] dark:border-[#262D3A] rounded-[18px] overflow-hidden">
                     {/* Table Header */}
-                    <div className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-[#E7E8EE] dark:border-[#262D3A] bg-[#F2F3F7] dark:bg-[#1B2230]">
-                        <div className="col-span-5 font-display text-[12px] font-semibold uppercase tracking-wide text-[#6B7280] dark:text-[#8A92A3]">
+                    <div className="grid grid-cols-12 gap-4 px-4 sm:px-6 py-4 border-b border-[#E7E8EE] dark:border-[#262D3A] bg-[#F2F3F7] dark:bg-[#1B2230]">
+                        <div className="col-span-7 sm:col-span-5 font-display text-[12px] font-semibold uppercase tracking-wide text-[#6B7280] dark:text-[#8A92A3]">
                             Project
                         </div>
                         <div className="col-span-2 font-display text-[12px] font-semibold uppercase tracking-wide text-[#6B7280] dark:text-[#8A92A3] hidden sm:block">
@@ -275,10 +275,10 @@ const AdminProjects = () => {
                     {projects.map((project) => (
                         <div
                             key={project._id}
-                            className="grid grid-cols-12 gap-4 px-6 py-4 border-b border-[#E7E8EE] dark:border-[#262D3A] last:border-b-0 hover:bg-[#FAFAFB] dark:hover:bg-[#0E1117] transition-colors items-center"
+                            className="grid grid-cols-12 gap-4 px-4 sm:px-6 py-4 border-b border-[#E7E8EE] dark:border-[#262D3A] last:border-b-0 hover:bg-[#FAFAFB] dark:hover:bg-[#0E1117] transition-colors items-center"
                         >
                             {/* Project Info */}
-                            <div className="col-span-5 flex items-center gap-3 min-w-0">
+                            <div className="col-span-7 sm:col-span-5 flex items-center gap-3 min-w-0">
                                 {project.image ? (
                                     <img
                                         src={project.image}

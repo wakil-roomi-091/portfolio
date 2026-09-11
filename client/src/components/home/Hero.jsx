@@ -89,7 +89,32 @@ const Hero = ({ dark }) => {
             <div className="max-w-[1200px] mx-auto px-8 w-full relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 xl:gap-16 items-center">
                     {/* Left Column */}
-                    <div className="space-y-5">
+                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left space-y-5">
+                        {/* Mobile Avatar (Visible only on < lg) */}
+                        <div className="lg:hidden mb-2">
+                            <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 gradient-bg shadow-[0_12px_30px_-8px_rgb(var(--accent-rgb)_/_0.5)]">
+                                <div className="w-full h-full rounded-full overflow-hidden relative bg-gradient-to-br from-accent to-accent-end">
+                                    {profileImage && !imgError ? (
+                                        <img
+                                            src={profileImage}
+                                            alt={name}
+                                            className="w-full h-full object-cover"
+                                            onError={() => setImgError(true)}
+                                        />
+                                    ) : (
+                                        <>
+                                            <div className="absolute inset-0 stripe-pattern animate-slide" />
+                                            <div className="relative z-10 flex items-center justify-center h-full">
+                                                <span className="font-display text-4xl sm:text-5xl font-extrabold text-white">
+                                                    {name.charAt(0)}
+                                                </span>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
                         {/* Eyebrow */}
                         <div className="inline-flex items-center gap-2.5 gradient-soft rounded-full py-[7px] pr-4 pl-2.5">
                             <span className="w-[7px] h-[7px] rounded-full gradient-bg" />
@@ -99,7 +124,7 @@ const Hero = ({ dark }) => {
                         </div>
 
                         {/* H1 */}
-                        <h1 className="font-display text-[clamp(38px,5.5vw,68px)] font-extrabold tracking-[-0.02em] leading-[1.08]">
+                        <h1 className="font-display text-[clamp(34px,5.5vw,68px)] font-extrabold tracking-[-0.02em] leading-[1.08]">
                             Hi, I'm {name} —
                             <br />
                             I design &amp; build
@@ -108,12 +133,12 @@ const Hero = ({ dark }) => {
                         </h1>
 
                         {/* Lede */}
-                        <p className="font-body text-[16px] text-[#6B7280] max-w-[460px] leading-[1.65]">
+                        <p className="font-body text-[15px] sm:text-[16px] text-[#6B7280] dark:text-[#8A92A3] max-w-[460px] leading-[1.65]">
                             {aboutP1}
                         </p>
 
                         {/* Action Buttons */}
-                        <div className="flex flex-wrap gap-4 pt-1">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-1">
                             <a
                                 href="#work"
                                 className="inline-flex items-center gap-2.5 font-display text-[14px] font-semibold py-[14px] px-6 rounded-full gradient-bg text-white shadow-[0_10px_26px_-10px_rgb(var(--accent-rgb)_/_0.55)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_-10px_rgb(var(--accent-rgb)_/_0.6)]"
@@ -131,16 +156,14 @@ const Hero = ({ dark }) => {
                             </a>
                         </div>
 
-                        {/* Meta Stats — even 3-up grid on mobile/tablet so the
-                            three stats stay balanced on one row; reverts to the
-                            original free-flowing flex layout at lg (desktop). */}
-                        <div className="grid grid-cols-3 gap-3 pt-4 sm:gap-6 lg:flex lg:flex-wrap lg:gap-8 lg:pt-3">
+                        {/* Meta Stats */}
+                        <div className="w-full grid grid-cols-3 gap-3 pt-4 sm:gap-6 lg:flex lg:flex-wrap lg:gap-8 lg:pt-3">
                             {heroStats.map((stat, index) => (
-                                <div key={index} className="flex flex-col gap-0.5 min-w-0">
+                                <div key={index} className="flex flex-col gap-0.5 min-w-0 text-center lg:text-left">
                                     <span className="font-display text-[20px] sm:text-[24px] lg:text-[26px] font-extrabold leading-tight">
                                         {stat.num || '—'}
                                     </span>
-                                    <span className="font-body text-[12px] text-[#6B7280]">
+                                    <span className="font-body text-[12px] text-[#6B7280] dark:text-[#8A92A3]">
                                         {stat.lab || ''}
                                     </span>
                                 </div>

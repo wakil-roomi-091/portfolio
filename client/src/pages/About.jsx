@@ -144,7 +144,7 @@ const About = ({ dark }) => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-1 space-y-6">
-                        <div className="rounded-[24px] overflow-hidden bg-gradient-to-br from-accent to-accent-end aspect-square relative shadow-[0_30px_60px_-24px_rgb(var(--accent-rgb)_/_0.4)]">
+                        <div className="max-w-[280px] sm:max-w-[340px] mx-auto lg:max-w-full rounded-[24px] overflow-hidden bg-gradient-to-br from-accent to-accent-end aspect-square relative shadow-[0_30px_60px_-24px_rgb(var(--accent-rgb)_/_0.4)]">
                             <div className="absolute inset-0 stripe-pattern-45 animate-slide-slow" />
                             <div className="absolute inset-0 flex items-center justify-center">
                                 {profileImage ? (
@@ -154,7 +154,7 @@ const About = ({ dark }) => {
                                         className="w-full h-full object-cover"
                                     />
                                 ) : (
-                                    <span className="font-display text-[120px] font-extrabold text-white/90">
+                                    <span className="font-display text-[96px] sm:text-[120px] font-extrabold text-white/90">
                                         {name.charAt(0)}
                                     </span>
                                 )}

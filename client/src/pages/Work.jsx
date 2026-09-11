@@ -104,54 +104,58 @@ const Work = ({ dark }) => {
                 </div>
 
                 {/* ===== SEARCH & FILTERS ===== */}
-                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <div className="flex flex-col sm:flex-row gap-4 mb-6">
                     <div className="flex-1 relative">
                         <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B7280] dark:text-[#8A92A3]" strokeWidth={1.5} />
                         <input
                             type="text"
-                            placeholder="Search projects by title, description, or tech stack..."
+                            placeholder="Search projects..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className={`w-full pl-11 pr-4 py-3 rounded-xl border ${dark
+                            className={`w-full pl-11 pr-4 py-3 text-sm rounded-xl border ${dark
                                     ? 'bg-[#161B22] border-[#262D3A] text-[#ECEEF1] placeholder:text-[#8A92A3]'
                                     : 'bg-white border-[#E7E8EE] text-[#14151A] placeholder:text-[#6B7280]'
                                 } focus:border-accent focus:outline-none transition-colors`}
                         />
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
-                        <button
-                            onClick={() => setView('grid')}
-                            className={`p-2.5 rounded-xl transition-all duration-200 ${view === 'grid'
-                                    ? 'gradient-bg text-white shadow-lg'
-                                    : 'text-[#6B7280] dark:text-[#8A92A3] hover:bg-[#F2F3F7] dark:hover:bg-[#1B2230]'
-                                }`}
-                        >
-                            <FiGrid className="w-5 h-5" strokeWidth={1.5} />
-                        </button>
-                        <button
-                            onClick={() => setView('list')}
-                            className={`p-2.5 rounded-xl transition-all duration-200 ${view === 'list'
-                                    ? 'gradient-bg text-white shadow-lg'
-                                    : 'text-[#6B7280] dark:text-[#8A92A3] hover:bg-[#F2F3F7] dark:hover:bg-[#1B2230]'
-                                }`}
-                        >
-                            <FiList className="w-5 h-5" strokeWidth={1.5} />
-                        </button>
-                        <span className="font-body text-sm text-[#6B7280] dark:text-[#8A92A3] ml-2">
-                            {filteredProjects.length} / {totalProjects}
+                    <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
+                        <div className="flex items-center gap-1.5">
+                            <button
+                                onClick={() => setView('grid')}
+                                className={`p-2.5 rounded-xl transition-all duration-200 ${view === 'grid'
+                                        ? 'gradient-bg text-white shadow-lg'
+                                        : 'text-[#6B7280] dark:text-[#8A92A3] hover:bg-[#F2F3F7] dark:hover:bg-[#1B2230]'
+                                    }`}
+                                title="Grid View"
+                            >
+                                <FiGrid className="w-5 h-5" strokeWidth={1.5} />
+                            </button>
+                            <button
+                                onClick={() => setView('list')}
+                                className={`p-2.5 rounded-xl transition-all duration-200 ${view === 'list'
+                                        ? 'gradient-bg text-white shadow-lg'
+                                        : 'text-[#6B7280] dark:text-[#8A92A3] hover:bg-[#F2F3F7] dark:hover:bg-[#1B2230]'
+                                    }`}
+                                title="List View"
+                            >
+                                <FiList className="w-5 h-5" strokeWidth={1.5} />
+                            </button>
+                        </div>
+                        <span className="font-body text-xs sm:text-sm text-[#6B7280] dark:text-[#8A92A3] ml-2">
+                            {filteredProjects.length} / {totalProjects} projects
                         </span>
                     </div>
                 </div>
 
                 {/* ===== TAG FILTERS ===== */}
-                <div className="flex flex-wrap gap-2 mb-8">
+                <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2 scrollbar-thin">
                     {allTags.map((tag) => (
                         <button
                             key={tag}
                             onClick={() => setFilterTag(tag)}
-                            className={`px-4 py-2 rounded-full font-display text-sm font-medium transition-all duration-200 ${filterTag === tag
-                                    ? 'gradient-bg text-white shadow-lg'
+                            className={`px-4 py-2 rounded-full font-display text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 shrink-0 ${filterTag === tag
+                                    ? 'gradient-bg text-white shadow-md'
                                     : dark
                                         ? 'bg-[#161B22] border border-[#262D3A] text-[#8A92A3] hover:border-accent hover:text-[#ECEEF1]'
                                         : 'bg-white border border-[#E7E8EE] text-[#6B7280] hover:border-accent hover:text-[#14151A]'

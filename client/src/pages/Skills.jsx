@@ -149,42 +149,42 @@ const Skills = ({ dark }) => {
                 </div>
 
                 {/* ===== STATS SUMMARY ===== */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 sm:mb-16">
-                    <div className={`rounded-[18px] border p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-[#161B22] border-[#262D3A]' : 'bg-white border-[#E7E8EE]'
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12 sm:mb-16">
+                    <div className={`rounded-[18px] border p-4 sm:p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-[#161B22] border-[#262D3A]' : 'bg-white border-[#E7E8EE]'
                         }`}>
-                        <div className="w-12 h-12 rounded-full gradient-soft flex items-center justify-center mx-auto mb-2">
-                            <FiZap className="w-5 h-5 text-accent" strokeWidth={1.5} />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full gradient-soft flex items-center justify-center mx-auto mb-2">
+                            <FiZap className="w-4 h-4 sm:w-5 sm:h-5 text-accent" strokeWidth={1.5} />
                         </div>
-                        <span className="font-display text-3xl font-extrabold gradient-text">{totalSkills}</span>
-                        <p className="font-body text-sm text-[#6B7280] dark:text-[#8A92A3]">Total Skills</p>
+                        <span className="font-display text-2xl sm:text-3xl font-extrabold gradient-text">{totalSkills}</span>
+                        <p className="font-body text-xs sm:text-sm text-[#6B7280] dark:text-[#8A92A3]">Total Skills</p>
                     </div>
-                    <div className={`rounded-[18px] border p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-[#161B22] border-[#262D3A]' : 'bg-white border-[#E7E8EE]'
+                    <div className={`rounded-[18px] border p-4 sm:p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-[#161B22] border-[#262D3A]' : 'bg-white border-[#E7E8EE]'
                         }`}>
-                        <div className="w-12 h-12 rounded-full gradient-soft flex items-center justify-center mx-auto mb-2">
-                            <FiBox className="w-5 h-5 text-accent" strokeWidth={1.5} />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full gradient-soft flex items-center justify-center mx-auto mb-2">
+                            <FiBox className="w-4 h-4 sm:w-5 sm:h-5 text-accent" strokeWidth={1.5} />
                         </div>
-                        <span className="font-display text-3xl font-extrabold gradient-text">{totalCategories}</span>
-                        <p className="font-body text-sm text-[#6B7280] dark:text-[#8A92A3]">Categories</p>
+                        <span className="font-display text-2xl sm:text-3xl font-extrabold gradient-text">{totalCategories}</span>
+                        <p className="font-body text-xs sm:text-sm text-[#6B7280] dark:text-[#8A92A3]">Categories</p>
                     </div>
-                    <div className={`rounded-[18px] border p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-[#161B22] border-[#262D3A]' : 'bg-white border-[#E7E8EE]'
+                    <div className={`rounded-[18px] border p-4 sm:p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-[#161B22] border-[#262D3A]' : 'bg-white border-[#E7E8EE]'
                         }`}>
-                        <div className="w-12 h-12 rounded-full gradient-soft flex items-center justify-center mx-auto mb-2">
-                            <FiAward className="w-5 h-5 text-accent" strokeWidth={1.5} />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full gradient-soft flex items-center justify-center mx-auto mb-2">
+                            <FiAward className="w-4 h-4 sm:w-5 sm:h-5 text-accent" strokeWidth={1.5} />
                         </div>
-                        <span className="font-display text-3xl font-extrabold gradient-text">
+                        <span className="font-display text-2xl sm:text-3xl font-extrabold gradient-text">
                             {Object.values(groupedSkills).reduce((max, arr) => Math.max(max, arr.length), 0)}
                         </span>
-                        <p className="font-body text-sm text-[#6B7280] dark:text-[#8A92A3]">Most in a Category</p>
+                        <p className="font-body text-xs sm:text-sm text-[#6B7280] dark:text-[#8A92A3]">Most in Category</p>
                     </div>
-                    <div className={`rounded-[18px] border p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-[#161B22] border-[#262D3A]' : 'bg-white border-[#E7E8EE]'
+                    <div className={`rounded-[18px] border p-4 sm:p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-[#161B22] border-[#262D3A]' : 'bg-white border-[#E7E8EE]'
                         }`}>
-                        <div className="w-12 h-12 rounded-full gradient-soft flex items-center justify-center mx-auto mb-2">
-                            <FiTrendingUp className="w-5 h-5 text-accent" strokeWidth={1.5} />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full gradient-soft flex items-center justify-center mx-auto mb-2">
+                            <FiTrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-accent" strokeWidth={1.5} />
                         </div>
-                        <span className="font-display text-3xl font-extrabold gradient-text">
+                        <span className="font-display text-2xl sm:text-3xl font-extrabold gradient-text">
                             {new Date().getFullYear() - 2022}+
                         </span>
-                        <p className="font-body text-sm text-[#6B7280] dark:text-[#8A92A3]">Years Learning</p>
+                        <p className="font-body text-xs sm:text-sm text-[#6B7280] dark:text-[#8A92A3]">Years Learning</p>
                     </div>
                 </div>
 
