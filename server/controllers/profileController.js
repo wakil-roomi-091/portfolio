@@ -92,8 +92,21 @@ const updateProfile = async (req, res) => {
     if (aboutHeading !== undefined) profile.aboutHeading = aboutHeading;
     if (aboutP1 !== undefined) profile.aboutP1 = aboutP1;
     if (aboutP2 !== undefined) profile.aboutP2 = aboutP2;
-    if (stats !== undefined) profile.stats = stats;
-    if (social !== undefined) profile.social = social;
+    if (stats !== undefined) {
+      profile.stats = Array.isArray(stats)
+        ? stats.map((item) => ({
+            num: item?.num || "",
+            lab: item?.lab || "",
+          }))
+        : [];
+    }
+    if (social !== undefined && social !== null) {
+      profile.social = {
+        github: social.github || "",
+        linkedin: social.linkedin || "",
+        email: social.email || "",
+      };
+    }
 
     // The admin panel removes an asset by clearing its URL. Honour that here
     // and delete the backing file — otherwise a "removed" CV stays downloadable

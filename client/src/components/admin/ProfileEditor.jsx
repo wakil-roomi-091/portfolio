@@ -26,9 +26,7 @@ const ProfileEditor = () => {
             email: '',
         },
         profileImage: '',
-        profileImagePublicId: '',
         cvUrl: '',
-        cvPublicId: '',
     });
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
@@ -105,7 +103,7 @@ const ProfileEditor = () => {
     const removeImage = async () => {
         if (!profile.profileImage) return;
         try {
-            const updated = { ...profile, profileImage: '', profileImagePublicId: '' };
+            const updated = { ...profile, profileImage: '' };
             await api.put('/profile', updated);
             setProfile(updated);
             toast.success('Image removed');
@@ -156,7 +154,7 @@ const ProfileEditor = () => {
     const removeCV = async () => {
         if (!profile.cvUrl) return;
         try {
-            const updated = { ...profile, cvUrl: '', cvPublicId: '' };
+            const updated = { ...profile, cvUrl: '' };
             await api.put('/profile', updated);
             setProfile(updated);
             setCvName('');
