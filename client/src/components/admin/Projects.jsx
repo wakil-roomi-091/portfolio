@@ -53,6 +53,11 @@ const AdminProjects = () => {
         const files = Array.from(e.target.files);
         if (files.length === 0) return;
 
+        if (selectedImages.length + files.length > 5) {
+            toast.error('You can upload a maximum of 5 images per project');
+            return;
+        }
+
         const previews = files.map((file) => URL.createObjectURL(file));
         setImagePreviews([...imagePreviews, ...previews]);
         setSelectedImages([...selectedImages, ...files]);
@@ -80,7 +85,8 @@ const AdminProjects = () => {
             const res = await api.post('/projects/upload', formData);
             return res.data.images;
         } catch (error) {
-            toast.error('Failed to upload images');
+            const msg = error.response?.data?.message || 'Failed to upload images';
+            toast.error(msg);
             return null;
         }
     };
