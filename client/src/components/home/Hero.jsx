@@ -89,34 +89,32 @@ const Hero = ({ dark }) => {
             <div className="max-w-[1200px] mx-auto px-5 sm:px-8 w-full relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 xl:gap-16 items-center">
                     {/* Left Column */}
-                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left space-y-4.5 sm:space-y-5.5 lg:space-y-5">
+                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                         {/* Mobile Avatar (Visible only on < lg) */}
                         <div className="lg:hidden mb-4 sm:mb-5">
-                            <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 gradient-bg shadow-[0_14px_34px_-8px_rgb(var(--accent-rgb)_/_0.5)] sm:shadow-[0_12px_30px_-8px_rgb(var(--accent-rgb)_/_0.5)]">
-                                <div className="w-full h-full rounded-full overflow-hidden relative bg-gradient-to-br from-accent to-accent-end">
-                                    {profileImage && !imgError ? (
-                                        <img
-                                            src={profileImage}
-                                            alt={name}
-                                            className="w-full h-full object-cover"
-                                            onError={() => setImgError(true)}
-                                        />
-                                    ) : (
-                                        <>
-                                            <div className="absolute inset-0 stripe-pattern animate-slide" />
-                                            <div className="relative z-10 flex items-center justify-center h-full">
-                                                <span className="font-display text-4xl sm:text-5xl font-extrabold text-white">
-                                                    {name.charAt(0)}
-                                                </span>
-                                            </div>
-                                        </>
-                                    )}
-                                </div>
+                            <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden relative bg-gradient-to-br from-accent to-accent-end">
+                                {profileImage && !imgError ? (
+                                    <img
+                                        src={profileImage}
+                                        alt={name}
+                                        className="w-full h-full object-cover"
+                                        onError={() => setImgError(true)}
+                                    />
+                                ) : (
+                                    <>
+                                        <div className="absolute inset-0 stripe-pattern animate-slide" />
+                                        <div className="relative z-10 flex items-center justify-center h-full">
+                                            <span className="font-display text-4xl sm:text-5xl font-extrabold text-white">
+                                                {name.charAt(0)}
+                                            </span>
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         </div>
 
                         {/* Eyebrow */}
-                        <div className="inline-flex items-center gap-2.5 gradient-soft rounded-full py-[6px] px-3.5 sm:py-[7px] sm:pr-4 sm:pl-2.5 max-w-full">
+                        <div className="inline-flex items-center gap-2.5 gradient-soft rounded-full py-[6px] px-3.5 sm:py-[7px] sm:pr-4 sm:pl-2.5 max-w-full mb-4 sm:mb-5">
                             <span className="w-[7px] h-[7px] rounded-full gradient-bg" />
                             <span className="font-display text-[13px] font-semibold tracking-[0.16em] uppercase text-accent">
                                 Open for internships &amp; freelance
@@ -124,8 +122,8 @@ const Hero = ({ dark }) => {
                         </div>
 
                         {/* H1 */}
-                        <h1 className="font-display text-[32px] xs:text-[36px] sm:text-[44px] lg:text-[56px] xl:text-[68px] font-black tracking-[-0.025em] leading-[1.12] sm:leading-[1.1]">
-                            Hi, I'm {name} —
+                        <h1 className="font-display text-[32px] xs:text-[36px] sm:text-[44px] lg:text-[56px] xl:text-[68px] font-black tracking-[-0.025em] leading-[1.12] sm:leading-[1.1] mb-5 sm:mb-6">
+                            Hi, I'm {name} <span className="hidden lg:inline">—</span>
                             <br />
                             I design &amp; build
                             <br />
@@ -133,7 +131,7 @@ const Hero = ({ dark }) => {
                         </h1>
 
                         {/* Lede */}
-                        <p className="font-body text-[14.5px] sm:text-[16px] text-[#4B5563] dark:text-[#9DA6B8] max-w-[360px] sm:max-w-[460px] leading-[1.6] px-1 sm:px-0">
+                        <p className="font-body text-[14.5px] sm:text-[16px] text-[#4B5563] dark:text-[#9DA6B8] max-w-[360px] sm:max-w-[460px] leading-[1.6] px-1 sm:px-0 mb-7 sm:mb-8">
                             {aboutP1}
                         </p>
 
@@ -157,7 +155,7 @@ const Hero = ({ dark }) => {
                         </div>
 
                         {/* Meta Stats */}
-                        <div className="w-full max-w-[380px] sm:max-w-[460px] lg:max-w-none grid grid-cols-3 gap-2 sm:gap-6 pt-3.5 sm:pt-4 lg:flex lg:flex-wrap lg:gap-8 lg:pt-3">
+                        <div className="w-full max-w-[380px] sm:max-w-[460px] lg:max-w-none grid grid-cols-3 gap-2 sm:gap-6 mt-7 sm:mt-8 lg:flex lg:flex-wrap lg:gap-8 lg:mt-3">
                             {heroStats.map((stat, index) => (
                                 <div key={index} className="flex flex-col items-center lg:items-start text-center lg:text-left gap-0.5 min-w-0 px-1">
                                     <span className="font-display text-[20px] sm:text-[24px] lg:text-[26px] font-extrabold leading-tight">
