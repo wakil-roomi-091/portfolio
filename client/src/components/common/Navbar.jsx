@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FiMenu, FiX, FiSun, FiMoon, FiLock, FiUser, FiLogOut, FiUserCheck } from 'react-icons/fi';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 const Navbar = ({ dark, toggleDark }) => {
@@ -8,6 +8,7 @@ const Navbar = ({ dark, toggleDark }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { user, isAdmin, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +29,8 @@ const Navbar = ({ dark, toggleDark }) => {
     logout();
     navigate('/');
   };
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <nav
@@ -50,8 +53,13 @@ const Navbar = ({ dark, toggleDark }) => {
             <Link
               key={link.name}
               to={link.path}
-              className={`font-display text-[14px] font-medium ${dark ? 'text-[#8A92A3] hover:text-[#ECEEF1]' : 'text-[#6B7280] hover:text-[#14151A]'
-                } transition-colors duration-200`}
+              className={`font-display text-[14px] font-medium transition-colors duration-200 ${
+                isActive(link.path)
+                  ? 'text-accent font-semibold'
+                  : dark
+                  ? 'text-[#8A92A3] hover:text-[#ECEEF1]'
+                  : 'text-[#6B7280] hover:text-[#14151A]'
+              }`}
             >
               {link.name}
             </Link>
@@ -82,7 +90,7 @@ const Navbar = ({ dark, toggleDark }) => {
               </Link>
               <button
                 onClick={handleLogout}
-                className={`inline-flex items-center gap-1.5 font-display text-[13px] font-semibold px-4 py-2 rounded-full border ${dark ? 'border-[#262D3A] hover:border-red-500 text-[#8A92A3] hover:text-red-400' : 'border-[#E7E8EE] hover:border-red-400 text-[#6B7280] hover:text-red-500'
+                className={`hidden lg:inline-flex items-center gap-1.5 font-display text-[13px] font-semibold px-4 py-2 rounded-full border outline-none ${dark ? 'border-[#262D3A] hover:border-red-500 text-[#8A92A3] hover:text-red-400' : 'border-[#E7E8EE] hover:border-red-400 text-[#6B7280] hover:text-red-500'
                   } transition-all duration-200`}
               >
                 <FiLogOut className="w-3.5 h-3.5" strokeWidth={1.5} />
@@ -148,8 +156,13 @@ const Navbar = ({ dark, toggleDark }) => {
               key={link.name}
               to={link.path}
               onClick={() => setMobileOpen(false)}
-              className={`font-display text-[16px] font-medium ${dark ? 'text-[#8A92A3] hover:text-[#ECEEF1]' : 'text-[#6B7280] hover:text-[#14151A]'
-                } transition-colors duration-200 py-2`}
+              className={`font-display text-[16px] font-medium transition-colors duration-200 py-2 ${
+                isActive(link.path)
+                  ? 'text-accent font-semibold'
+                  : dark
+                  ? 'text-[#8A92A3] hover:text-[#ECEEF1]'
+                  : 'text-[#6B7280] hover:text-[#14151A]'
+              }`}
             >
               {link.name}
             </Link>
@@ -173,14 +186,14 @@ const Navbar = ({ dark, toggleDark }) => {
                 className={`font-display text-[16px] font-medium ${dark ? 'text-[#8A92A3] hover:text-[#ECEEF1]' : 'text-[#6B7280] hover:text-[#14151A]'} transition-colors duration-200 py-2 flex items-center gap-2`}
               >
                 <FiUserCheck className="w-4 h-4" strokeWidth={1.5} />
-                Your account
+                Your account ({user.name})
               </Link>
               <button
                 onClick={() => {
                   handleLogout();
                   setMobileOpen(false);
                 }}
-                className="font-display text-[16px] font-medium text-red-500 py-2 text-left flex items-center gap-2"
+                className="font-display text-[16px] font-medium text-red-500 py-2 text-left flex items-center gap-2 border-0 bg-transparent outline-none cursor-pointer"
               >
                 <FiLogOut className="w-4 h-4" strokeWidth={1.5} />
                 Logout
