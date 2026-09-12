@@ -64,7 +64,7 @@ const Hero = ({ dark }) => {
         <section
             ref={sectionRef}
             id="hero"
-            className="min-h-screen flex items-center pt-[120px] pb-24 relative overflow-hidden"
+            className="min-h-0 lg:min-h-screen flex items-center pt-12 sm:pt-[120px] lg:pt-[120px] pb-10 sm:pb-24 lg:pb-24 relative overflow-hidden"
         >
             {/* Dot Grid Background */}
             <div
@@ -91,8 +91,8 @@ const Hero = ({ dark }) => {
                     {/* Left Column */}
                     <div className="flex flex-col items-center text-center lg:items-start lg:text-left space-y-5">
                         {/* Mobile Avatar (Visible only on < lg) */}
-                        <div className="lg:hidden mb-2">
-                            <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 gradient-bg shadow-[0_12px_30px_-8px_rgb(var(--accent-rgb)_/_0.5)]">
+                        <div className="lg:hidden mb-5 sm:mb-2">
+                            <div className="w-[180px] h-[180px] sm:w-36 sm:h-36 rounded-full p-1 gradient-bg shadow-[0_14px_34px_-8px_rgb(var(--accent-rgb)_/_0.5)] sm:shadow-[0_12px_30px_-8px_rgb(var(--accent-rgb)_/_0.5)]">
                                 <div className="w-full h-full rounded-full overflow-hidden relative bg-gradient-to-br from-accent to-accent-end">
                                     {profileImage && !imgError ? (
                                         <img
@@ -116,7 +116,7 @@ const Hero = ({ dark }) => {
                         </div>
 
                         {/* Eyebrow */}
-                        <div className="inline-flex items-center gap-2.5 gradient-soft rounded-full py-[7px] pr-4 pl-2.5">
+                        <div className="inline-flex items-center gap-2.5 gradient-soft rounded-full py-[6px] px-3.5 sm:py-[7px] sm:pr-4 sm:pl-2.5 max-w-full">
                             <span className="w-[7px] h-[7px] rounded-full gradient-bg" />
                             <span className="font-display text-[13px] font-semibold tracking-[0.16em] uppercase text-accent">
                                 Open for internships &amp; freelance
@@ -124,7 +124,7 @@ const Hero = ({ dark }) => {
                         </div>
 
                         {/* H1 */}
-                        <h1 className="font-display text-[clamp(34px,5.5vw,68px)] font-extrabold tracking-[-0.02em] leading-[1.08]">
+                        <h1 className="font-display text-[clamp(30px,5.5vw,68px)] font-extrabold tracking-[-0.02em] leading-[1.1]">
                             Hi, I'm {name} —
                             <br />
                             I design &amp; build
@@ -133,22 +133,22 @@ const Hero = ({ dark }) => {
                         </h1>
 
                         {/* Lede */}
-                        <p className="font-body text-[15px] sm:text-[16px] text-[#6B7280] dark:text-[#8A92A3] max-w-[460px] leading-[1.65]">
+                        <p className="font-body text-[14.5px] sm:text-[16px] text-[#4B5563] dark:text-[#9DA6B8] max-w-[420px] sm:max-w-[460px] leading-[1.6]">
                             {aboutP1}
                         </p>
 
                         {/* Action Buttons */}
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-1">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-1">
                             <a
                                 href="#work"
-                                className="inline-flex items-center gap-2.5 font-display text-[14px] font-semibold py-[14px] px-6 rounded-full gradient-bg text-white shadow-[0_10px_26px_-10px_rgb(var(--accent-rgb)_/_0.55)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_-10px_rgb(var(--accent-rgb)_/_0.6)]"
+                                className="inline-flex items-center gap-2.5 font-display text-[14px] font-semibold py-[12px] px-5 sm:py-[14px] sm:px-6 rounded-full gradient-bg text-white shadow-[0_10px_26px_-10px_rgb(var(--accent-rgb)_/_0.55)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_-10px_rgb(var(--accent-rgb)_/_0.6)]"
                             >
                                 View my work
                                 <FiArrowRight className="w-4 h-4" strokeWidth={2} />
                             </a>
                             <a
                                 href="#contact"
-                                className={`inline-flex items-center gap-2.5 font-display text-[14px] font-semibold py-[14px] px-6 rounded-full border-[1.5px] ${dark ? 'border-[#262D3A] bg-[#161B22] text-[#ECEEF1]' : 'border-[#E7E8EE] bg-[#FFFFFF] text-[#14151A]'
+                                className={`inline-flex items-center gap-2.5 font-display text-[14px] font-semibold py-[12px] px-5 sm:py-[14px] sm:px-6 rounded-full border-[1.5px] ${dark ? 'border-[#262D3A] bg-[#161B22] text-[#ECEEF1]' : 'border-[#E7E8EE] bg-[#FFFFFF] text-[#14151A]'
                                     } transition-all duration-300 hover:border-accent hover:-translate-y-1`}
                             >
                                 Get in touch
@@ -157,7 +157,7 @@ const Hero = ({ dark }) => {
                         </div>
 
                         {/* Meta Stats */}
-                        <div className="w-full grid grid-cols-3 gap-3 pt-4 sm:gap-6 lg:flex lg:flex-wrap lg:gap-8 lg:pt-3">
+                        <div className="w-full grid grid-cols-3 gap-2 sm:gap-6 pt-3 sm:pt-4 lg:flex lg:flex-wrap lg:gap-8 lg:pt-3">
                             {heroStats.map((stat, index) => (
                                 <div key={index} className="flex flex-col gap-0.5 min-w-0 text-center lg:text-left">
                                     <span className="font-display text-[20px] sm:text-[24px] lg:text-[26px] font-extrabold leading-tight">
