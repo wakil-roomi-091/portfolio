@@ -76,7 +76,7 @@ function AppShell() {
   }, [applyTheme]);
 
   return (
-    <div className={`min-h-screen ${dark ? 'bg-[#0E1117] text-[#ECEEF1]' : 'bg-[#FAFAFB] text-[#14151A]'} transition-colors duration-400`}>
+    <div className={`min-h-screen overflow-x-hidden ${dark ? 'bg-[#0E1117] text-[#ECEEF1]' : 'bg-[#FAFAFB] text-[#14151A]'} transition-colors duration-400`}>
       <Suspense fallback={<PageFallback />}>
         <Routes>
         {/* Public Routes with Navbar + Footer */}

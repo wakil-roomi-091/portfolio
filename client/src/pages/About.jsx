@@ -70,7 +70,7 @@ const About = ({ dark }) => {
                     Back to Home
                 </Link>
 
-                <div className="mb-10 sm:mb-16 relative">
+                <div className="mb-10 sm:mb-16 relative overflow-hidden">
                     <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
                     <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-accent-end/5 blur-3xl pointer-events-none" />
 
