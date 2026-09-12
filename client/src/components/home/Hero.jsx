@@ -64,7 +64,7 @@ const Hero = ({ dark }) => {
         <section
             ref={sectionRef}
             id="hero"
-            className="min-h-[100dvh] lg:min-h-screen flex items-center pt-20 sm:pt-28 lg:pt-[120px] pb-10 sm:pb-20 lg:pb-24 relative overflow-hidden"
+            className="min-h-[100dvh] lg:min-h-screen flex items-center pt-20 sm:pt-28 lg:pt-[120px] pb-12 sm:pb-20 lg:pb-24 relative overflow-hidden"
         >
             {/* Dot Grid Background */}
             <div
@@ -89,7 +89,7 @@ const Hero = ({ dark }) => {
             <div className="max-w-[1200px] mx-auto px-5 sm:px-8 w-full relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 xl:gap-16 items-center">
                     {/* Left Column */}
-                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left space-y-4 sm:space-y-5">
+                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left space-y-4.5 sm:space-y-5.5 lg:space-y-5">
                         {/* Mobile Avatar (Visible only on < lg) */}
                         <div className="lg:hidden mb-4 sm:mb-5">
                             <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 gradient-bg shadow-[0_14px_34px_-8px_rgb(var(--accent-rgb)_/_0.5)] sm:shadow-[0_12px_30px_-8px_rgb(var(--accent-rgb)_/_0.5)]">
@@ -124,7 +124,7 @@ const Hero = ({ dark }) => {
                         </div>
 
                         {/* H1 */}
-                        <h1 className="font-display text-[28px] xs:text-[32px] sm:text-[40px] lg:text-[56px] xl:text-[68px] font-extrabold tracking-[-0.02em] leading-[1.15] sm:leading-[1.1]">
+                        <h1 className="font-display text-[32px] xs:text-[36px] sm:text-[44px] lg:text-[56px] xl:text-[68px] font-black tracking-[-0.025em] leading-[1.12] sm:leading-[1.1]">
                             Hi, I'm {name} —
                             <br />
                             I design &amp; build
@@ -138,18 +138,18 @@ const Hero = ({ dark }) => {
                         </p>
 
                         {/* Action Buttons */}
-                        <div className="flex flex-row flex-wrap justify-center lg:justify-start gap-2.5 sm:gap-4 pt-1 w-full sm:w-auto">
+                        <div className="flex flex-row flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-1.5 sm:pt-2 w-full sm:w-auto">
                             <a
                                 href="#work"
-                                className="inline-flex items-center justify-center gap-2.5 font-display text-[13.5px] sm:text-[14px] font-semibold py-[11px] px-4.5 sm:py-[14px] sm:px-6 min-w-[130px] rounded-full gradient-bg text-white shadow-[0_10px_26px_-10px_rgb(var(--accent-rgb)_/_0.55)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_-10px_rgb(var(--accent-rgb)_/_0.6)]"
+                                className="inline-flex items-center justify-center gap-2.5 font-display text-[14px] sm:text-[15px] font-bold h-12 px-5 sm:px-6 min-w-[140px] rounded-full gradient-bg text-white shadow-[0_10px_24px_-8px_rgb(var(--accent-rgb)_/_0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_-8px_rgb(var(--accent-rgb)_/_0.65)] active:translate-y-0"
                             >
                                 View my work
                                 <FiArrowRight className="w-4 h-4" strokeWidth={2} />
                             </a>
                             <a
                                 href="#contact"
-                                className={`inline-flex items-center justify-center gap-2.5 font-display text-[13.5px] sm:text-[14px] font-semibold py-[11px] px-4.5 sm:py-[14px] sm:px-6 min-w-[130px] rounded-full border-[1.5px] ${dark ? 'border-[#262D3A] bg-[#161B22] text-[#ECEEF1]' : 'border-[#E7E8EE] bg-[#FFFFFF] text-[#14151A]'
-                                    } transition-all duration-300 hover:border-accent hover:-translate-y-1`}
+                                className={`inline-flex items-center justify-center gap-2.5 font-display text-[14px] sm:text-[15px] font-bold h-12 px-5 sm:px-6 min-w-[140px] rounded-full border-[1.5px] ${dark ? 'border-[#2D3545] bg-[#161B22] text-[#ECEEF1] hover:bg-[#1C222D] hover:border-accent' : 'border-[#D9DBE4] bg-[#FFFFFF] text-[#14151A] hover:bg-[#F9FAFB] hover:border-accent'
+                                    } shadow-sm transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0`}
                             >
                                 Get in touch
                                 <FiStar className="w-4 h-4" strokeWidth={1.5} />
@@ -157,7 +157,7 @@ const Hero = ({ dark }) => {
                         </div>
 
                         {/* Meta Stats */}
-                        <div className="w-full max-w-[380px] sm:max-w-[460px] lg:max-w-none grid grid-cols-3 gap-2 sm:gap-6 pt-3 sm:pt-4 lg:flex lg:flex-wrap lg:gap-8 lg:pt-3">
+                        <div className="w-full max-w-[380px] sm:max-w-[460px] lg:max-w-none grid grid-cols-3 gap-2 sm:gap-6 pt-3.5 sm:pt-4 lg:flex lg:flex-wrap lg:gap-8 lg:pt-3">
                             {heroStats.map((stat, index) => (
                                 <div key={index} className="flex flex-col items-center lg:items-start text-center lg:text-left gap-0.5 min-w-0 px-1">
                                     <span className="font-display text-[20px] sm:text-[24px] lg:text-[26px] font-extrabold leading-tight">
