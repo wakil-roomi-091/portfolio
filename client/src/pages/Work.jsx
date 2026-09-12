@@ -60,7 +60,7 @@ const Work = ({ dark }) => {
                 </Link>
 
                 {/* ===== HERO HEADER ===== */}
-                <div className="mb-10 sm:mb-12 relative overflow-hidden">
+                <div className="mb-10 sm:mb-12 relative">
                     <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
                     <div className="absolute -bottom-12 -left-12 w-64 h-64 rounded-full bg-accent-end/10 blur-3xl pointer-events-none" />
 
