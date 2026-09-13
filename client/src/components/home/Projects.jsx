@@ -61,7 +61,6 @@ const Projects = ({ dark }) => {
     // The home page is a highlight reel, not the full archive: show the first
     // four projects here and send visitors to /work for the rest.
     const visibleProjects = projects.slice(0, 4);
-    const hasMore = projects.length > 4;
 
     return (
         <section ref={sectionRef} id="work" className="py-16 sm:py-24 lg:py-[120px] max-w-[1200px] mx-auto px-5 sm:px-8">
@@ -83,11 +82,11 @@ const Projects = ({ dark }) => {
                 </div>
             ) : (
                 <>
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                         {visibleProjects.map((project, index) => (
                             <div
                                 key={project._id}
-                                className={`${project.span || 'lg:col-span-6'} col-span-12 scroll-reveal`}
+                                className={`${index >= 2 ? 'hidden md:block' : ''} scroll-reveal`}
                                 style={{ transitionDelay: `${index * 100}ms` }}
                             >
                                 <ProjectCard project={project} dark={dark} index={index} />
@@ -95,20 +94,18 @@ const Projects = ({ dark }) => {
                         ))}
                     </div>
 
-                    {hasMore && (
-                        <div className="scroll-reveal flex justify-center mt-14">
-                            <Link
-                                to="/work"
-                                className={`group inline-flex items-center gap-2.5 font-display text-[14px] font-semibold py-[14px] px-7 rounded-full border-[1.5px] transition-all duration-300 hover:border-accent hover:-translate-y-1 ${dark ? 'border-[#262D3A] bg-[#161B22] text-[#ECEEF1]' : 'border-[#E7E8EE] bg-[#FFFFFF] text-[#14151A]'
-                                    }`}
-                            >
-                                View all projects
-                                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full gradient-bg text-white transition-transform duration-300 group-hover:translate-x-0.5">
-                                    <FiArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
-                                </span>
-                            </Link>
-                        </div>
-                    )}
+                    <div className="scroll-reveal flex justify-center mt-12 sm:mt-14">
+                        <Link
+                            to="/work"
+                            className={`group inline-flex items-center gap-2.5 font-display text-[14px] font-semibold py-[14px] px-7 rounded-full border-[1.5px] transition-all duration-300 hover:border-accent hover:-translate-y-1 ${dark ? 'border-[#262D3A] bg-[#161B22] text-[#ECEEF1]' : 'border-[#E7E8EE] bg-[#FFFFFF] text-[#14151A]'
+                                }`}
+                        >
+                            Browse All Projects
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full gradient-bg text-white transition-transform duration-300 group-hover:translate-x-0.5">
+                                <FiArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
+                            </span>
+                        </Link>
+                    </div>
                 </>
             )}
         </section>
